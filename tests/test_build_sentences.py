@@ -104,18 +104,18 @@ def test_fix_agreement():
 
 def test_build_sentence(mocker):
     # Structure that exercises every branch in build_sentence
-    structure = ["ART", "ADJ", "NOUN", "ADV", "VERB", "PREP", "PRO"]
+    structure = ["PRO", "ADV", "VERB", "ART", "ADJ", "NOUN", "PREP", "ART", "ADJ", "NOUN"]
 
     # Seed word supplies letters for ADJ, NOUN, ADV, VERB, PREP
-    seed_word = "ABCDEFX"
+    seed_word = "ABCDEFG"
 
     # Data lists are arranged so A=0, B=1, C=2, etc.
     data = {
-        "adjectives": ["eager", "brave", "calm", "daring", "elegant", "fancy"],
-        "nouns": ["apple", "bear", "cat", "dog", "eagle", "frog"],
-        "adverbs": ["abruptly", "boldly", "calmly", "daily", "eagerly", "firmly"],
-        "verbs": ["accept", "build", "climb", "dance", "explore", "follow"],
-        "prepositions": ["above", "below", "circa", "during", "except", "from"],
+        "adjectives": ["eager", "brave", "calm", "daring", "elegant", "fancy", "gentle"],
+        "nouns": ["apple", "bear", "cat", "dog", "eagle", "frog", "goat"],
+        "adverbs": ["abruptly", "boldly", "calmly", "daily", "eagerly", "firmly", "gently"],
+        "verbs": ["accept", "build", "climb", "dance", "explore", "follow", "gather"],
+        "prepositions": ["above", "below", "circa", "during", "except", "from", "given"],
     }
 
     # Make article and pronoun predictable
@@ -124,4 +124,4 @@ def test_build_sentence(mocker):
 
     result = build_sentence(seed_word, structure, data)
 
-    assert result == "A eager bear calmly dance except he"
+    assert result == "He abruptly builds a calm dog except a fancy goat"
